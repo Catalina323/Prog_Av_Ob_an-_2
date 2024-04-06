@@ -2,26 +2,45 @@ package Proiect;
 
 public class Buchet {
 
-    private boolean trandafir;
-    private boolean frezie;
-    private boolean garoafa;
-    private boolean bujor;
-    private boolean lalea;
-    private boolean hortensie;
-    private boolean verdeata;
+    String nume;
+    private Trandafir[] trandafiri = null;
+    private Frezie[] frezii = null;
+    private Hortensie[] hortensii = null;
 
-    public Buchet(boolean trandafir, boolean frezie, boolean garoafa, boolean bujor, boolean lalea, boolean hortensie, boolean verdeata) {
-        this.trandafir = trandafir;
-        this.frezie = frezie;
-        this.garoafa = garoafa;
-        this.bujor = bujor;
-        this.lalea = lalea;
-        this.hortensie = hortensie;
-        this.verdeata = verdeata;
+    public static class Builder{
+
+        private Buchet buchet = new Buchet();
+
+        public Buchet build(){
+            return this.buchet;
+        }
+
+        public Builder(String nume){
+            buchet.nume = nume;
+        }
+
+        public Builder withTrandafir(int nr){
+            buchet.trandafiri = new Trandafir[nr];
+            return this;
+        }
+
+        public Builder withFrezie(int nr){
+            buchet.frezii = new Frezie[nr];
+            return this;
+        }
+
+        public Builder withHortensie(int nr){
+            buchet.hortensii = new Hortensie[nr];
+            return this;
+        }
+
+
+
+
+
     }
 
 
-
-
-
 }
+
+
