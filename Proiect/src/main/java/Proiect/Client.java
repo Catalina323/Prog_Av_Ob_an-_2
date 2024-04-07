@@ -14,9 +14,8 @@ public class Client{
         this.nrComenzi = 0;
     }
 
-    public void plaseazaComanda(){
+    public void plaseazaComanda(Comanda comanda){
         nrComenzi++;
-        Comanda comanda = new Comanda();
         istoricComanzi[nrComenzi % 5] = comanda;
     }
 
