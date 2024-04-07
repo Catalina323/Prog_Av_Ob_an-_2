@@ -14,29 +14,45 @@ public class Buchet {
 
         private Buchet buchet = new Buchet();
 
-        public Buchet build(){
+        public Buchet build()
+        {
             return this.buchet;
         }
 
-        public Builder(String nume){
+        public Builder(String nume)
+        {
             buchet.nume = nume;
         }
 
-        public Builder withTrandafir(int nr){
-            buchet.trandafiri = new Trandafir[nr];
+        public Builder withTrandafiri(int nr){
+            buchet.trandafiri = nr;
             return this;
         }
 
-        public Builder withFrezie(int nr){
-            buchet.frezii = new Frezie[nr];
+        public Builder withFrezii(int nr){
+            buchet.frezii = nr;
             return this;
         }
 
-        public Builder withHortensie(int nr){
-            buchet.hortensii = new Hortensie[nr];
+        public Builder withHortensii(int nr){
+            buchet.hortensii = nr;
             return this;
         }
 
+        public Builder withLalele(int nr){
+            buchet.lalele = nr;
+            return this;
+        }
+
+        public Builder withBujori(int nr){
+            buchet.bujori = nr;
+            return this;
+        }
+
+        public Builder withVerdeata(){
+            buchet.verdeata = true;
+            return this;
+        }
 
 
 
