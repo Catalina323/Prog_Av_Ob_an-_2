@@ -2,6 +2,8 @@ package Proiect;
 
 public class Aranjament extends Buchet{
 
+    //??? cum fac mostenirea ????
+
     private String nume;
     private Dimensiuni dimensiune;
 

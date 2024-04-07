@@ -1,4 +1,24 @@
 package Proiect;
 
-public class Client {
+public class Client{
+
+    private String nume;
+    private String prenume;
+    private Comanda[] istoricComanzi = new Comanda[5];
+
+    private static int nrComenzi;
+
+    public Client(String nume, String prenume) {
+        this.nume = nume;
+        this.prenume = prenume;
+        this.nrComenzi = 0;
+    }
+
+    public void plaseazaComanda(){
+        nrComenzi++;
+        Comanda comanda = new Comanda();
+        istoricComanzi[nrComenzi % 5] = comanda;
+    }
+
+
 }

@@ -1,6 +1,6 @@
 package Proiect;
 
-public class PreturiVanzare {
+public interface PreturiVanzare {
     //preturi cu care floraria vinde marfa clientilor
     final double pret_trandafir = 10;
     final double pret_frezie = 11;
