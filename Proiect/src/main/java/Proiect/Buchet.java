@@ -2,10 +2,13 @@ package Proiect;
 
 public class Buchet {
 
-    String nume;
-    private Trandafir[] trandafiri = null;
-    private Frezie[] frezii = null;
-    private Hortensie[] hortensii = null;
+    private String nume;
+    private int trandafiri;
+    private int frezii;
+    private int hortensii;
+    private int lalele;
+    private int bujori;
+    private boolean verdeata;
 
     public static class Builder{
 
