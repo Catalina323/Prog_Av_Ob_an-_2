@@ -2,18 +2,21 @@ package Proiect;
 
 import java.util.Arrays;
 
-public class Comanda extends Contabilitate{
+public class Comanda {
 
     private Buchet[] buchete;
     private Aranjament[] aranjamente;
     private String data;
 
+    private static Contabilitate contabilitate = Contabilitate.getInstance();
+
     public Comanda(Buchet[] buchete) {
         this.buchete = buchete;
 
         for(Buchet buchet:buchete){
-            cheltuieli += buchet.CalculeazaPretProducere();
-            venituri += buchet.CalculeazaPretVanzare();
+            System.out.println(buchet);
+            this.contabilitate.cheltuieli += buchet.CalculeazaPretProducere();
+            this.contabilitate.venituri += buchet.CalculeazaPretVanzare();
         }
 
     }
@@ -21,8 +24,8 @@ public class Comanda extends Contabilitate{
         this.aranjamente = aranjamente;
 
         for(Aranjament aranjament:aranjamente){
-            cheltuieli += aranjament.CalculeazaPretProducere();
-            venituri += aranjament.CalculeazaPretVanzare();
+            this.contabilitate.cheltuieli += aranjament.CalculeazaPretProducere();
+            this.contabilitate.venituri += aranjament.CalculeazaPretVanzare();
         }
 
     }

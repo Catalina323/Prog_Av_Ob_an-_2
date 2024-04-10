@@ -78,6 +78,7 @@ public class Aranjament extends Buchet{
     }
 
     public Aranjament(String nume, Dimensiuni dimensiune) {
+        //super();
         this.nume = nume;
         this.dimensiune = dimensiune;
     }

@@ -52,7 +52,7 @@ public class Buchet implements PreturiVanzare, PreturiCumparare{
 
     public static class Builder{
 
-        private Buchet buchet = new Buchet();
+        protected Buchet buchet = new Buchet();
 
         public Buchet build()
         {
