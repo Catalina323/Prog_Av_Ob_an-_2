@@ -8,14 +8,17 @@ public class Comanda extends Contabilitate{
     private Aranjament[] aranjamente;
     private String data;
 
-    public Comanda(Buchet[] buchete, Aranjament[] aranjamente) {
+    public Comanda(Buchet[] buchete) {
         this.buchete = buchete;
-        this.aranjamente = aranjamente;
 
         for(Buchet buchet:buchete){
             cheltuieli += buchet.CalculeazaPretProducere();
             venituri += buchet.CalculeazaPretVanzare();
         }
+
+    }
+    public Comanda(Aranjament[] aranjamente) {
+        this.aranjamente = aranjamente;
 
         for(Aranjament aranjament:aranjamente){
             cheltuieli += aranjament.CalculeazaPretProducere();
