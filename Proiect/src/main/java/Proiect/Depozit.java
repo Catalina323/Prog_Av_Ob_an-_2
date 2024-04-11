@@ -12,6 +12,29 @@ public class Depozit {
     private int nr_cos_medium;
     private int nr_cos_large;
 
+    //SINGLETON PT DEPOZIT
+    private static Depozit instance;
+
+    private Depozit(){
+        nr_bujori = 0;
+        nr_frezii = 0;
+        nr_lalele = 0;
+        nr_trandafiri = 0;
+        nr_hortensii = 0;
+        nr_verdeturi = 0;
+        nr_cos_large = 0;
+        nr_cos_medium = 0;
+        nr_cos_small = 0;
+    }
+
+    public static Depozit getInstance(){
+        if(instance == null){
+            instance = new Depozit();
+        }
+        return instance;
+    }
+
+
     public Depozit(int nr_trandafiri, int nr_hortensii, int nr_frezii, int nr_lalele, int nr_bujori, int nr_verdeturi, int nr_cos_small, int nr_cos_medium, int nr_cos_large) {
         this.nr_trandafiri = nr_trandafiri;
         this.nr_hortensii = nr_hortensii;

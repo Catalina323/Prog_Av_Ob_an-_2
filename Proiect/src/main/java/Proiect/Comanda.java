@@ -6,9 +6,9 @@ public class Comanda {
 
     private Buchet[] buchete;
     private Aranjament[] aranjamente;
-    private String data;
 
     private static Contabilitate contabilitate = Contabilitate.getInstance();
+    private static Depozit depozit = Depozit.getInstance();
 
     public Comanda(Buchet[] buchete) {
         this.buchete = buchete;
@@ -17,6 +17,8 @@ public class Comanda {
             System.out.println(buchet);
             this.contabilitate.cheltuieli += buchet.CalculeazaPretProducere();
             this.contabilitate.venituri += buchet.CalculeazaPretVanzare();
+            if(buchet.trandafiri > 0 && depo)
+
         }
 
     }
