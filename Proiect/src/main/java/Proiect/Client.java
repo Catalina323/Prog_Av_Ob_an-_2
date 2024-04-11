@@ -6,7 +6,7 @@ public class Client{
 
     private String nume;
     private String prenume;
-    private Comanda[] istoricComanzi = new Comanda[5];
+    private Comanda[] istoricComenzi = new Comanda[5];
 
     private static int nrComenzi;
 
@@ -18,7 +18,7 @@ public class Client{
 
     public void plaseazaComanda(Comanda comanda){
         nrComenzi++;
-        istoricComanzi[nrComenzi % 5 - 1] = comanda;
+        istoricComenzi[nrComenzi % 5 - 1] = comanda;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Client{
         return "Client{" +
                 "nume='" + nume + '\'' +
                 ", prenume='" + prenume + '\'' +
-                ", istoricComanzi=" + Arrays.toString(istoricComanzi) +
+                ", istoricComenzi=" + Arrays.toString(istoricComenzi) +
                 '}';
     }
 }
