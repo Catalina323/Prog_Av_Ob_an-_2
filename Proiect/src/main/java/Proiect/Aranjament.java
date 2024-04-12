@@ -77,6 +77,14 @@ public class Aranjament extends Buchet{
                 '}';
     }
 
+    public Dimensiuni getDimensiune() {
+        return dimensiune;
+    }
+
+    public void setDimensiune(Dimensiuni dimensiune) {
+        this.dimensiune = dimensiune;
+    }
+
     public static class Builder{
 
         protected Aranjament aranjament = new Aranjament();

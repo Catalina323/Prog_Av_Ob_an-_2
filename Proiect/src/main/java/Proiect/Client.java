@@ -21,6 +21,10 @@ public class Client{
         istoricComenzi[nrComenzi % 5 - 1] = comanda;
     }
 
+    public Comanda[] getIstoricComenzi(){
+        return istoricComenzi;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
