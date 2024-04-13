@@ -1,17 +1,21 @@
 package Proiect;
 
-public class Angajat {
+public class Angajat implements Comparable<Angajat>{
 
     private String nume;
     private String prenume;
     private int varsta;
-    private float salariu;
+    private int salariu;
+    private Data data_angajare;
 
-    public Angajat(String nume, String prenume, int varsta, float salariu) {
+
+
+    public Angajat(String nume, String prenume, int varsta, int salariu, int an, int luna) {
         this.nume = nume;
         this.prenume = prenume;
         this.varsta = varsta;
         this.salariu = salariu;
+        this.data_angajare = new Data(luna, an);
     }
 
     @Override
@@ -21,7 +25,16 @@ public class Angajat {
                 ", prenume='" + prenume + '\'' +
                 ", varsta=" + varsta +
                 ", salariu=" + salariu +
+                ", data_angajare=" + data_angajare +
                 '}';
+    }
+
+    public Data getData_angajare() {
+        return data_angajare;
+    }
+
+    public void setData_angajare(Data data_angajare) {
+        this.data_angajare = data_angajare;
     }
 
     public String getNume() {
@@ -52,7 +65,12 @@ public class Angajat {
         this.varsta = varsta;
     }
 
-    public void setSalariu(float salariu) {
+    public void setSalariu(int salariu) {
         this.salariu = salariu;
+    }
+
+    @Override
+    public int compareTo(Angajat o) {
+        return this.salariu - o.salariu;
     }
 }

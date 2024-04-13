@@ -10,6 +10,7 @@ public class Buchet implements PreturiVanzare, PreturiCumparare{
     protected int bujori = 0;
     protected boolean verdeata = false;
 
+
     public double CalculeazaPretVanzare(){
         double pretVerdeata;
         if(verdeata){
@@ -42,6 +43,8 @@ public class Buchet implements PreturiVanzare, PreturiCumparare{
                 bujori * pret_bujor_c +
                 pretVerdeata;
     }
+
+
 
     @Override
     public String toString() {

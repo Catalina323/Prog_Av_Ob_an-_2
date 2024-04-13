@@ -6,6 +6,7 @@ public class Comanda {
 
     private Buchet[] buchete;
     private Aranjament[] aranjamente;
+    private Angajat angajat;
 
     private static Contabilitate contabilitate = Contabilitate.getInstance();
     private static Depozit depozit = Depozit.getInstance();
@@ -105,7 +106,6 @@ public class Comanda {
             depozit.setNr_bujori(depozit.getNr_bujori() - vect[4]);
             depozit.setNr_verdeturi(depozit.getNr_verdeturi() - vect[5]);
 
-            this.contabilitate.cheltuieli += buchet.CalculeazaPretProducere();
             this.contabilitate.venituri += buchet.CalculeazaPretVanzare();
 
         }
@@ -239,13 +239,21 @@ public class Comanda {
             depozit.setNr_cos_medium(depozit.getNr_cos_medium() - vect[7]);
             depozit.setNr_cos_large(depozit.getNr_cos_large() - vect[8]);
 
-            this.contabilitate.cheltuieli += aranjament.CalculeazaPretProducere();
-            this.contabilitate.venituri += aranjament.CalculeazaPretVanzare();
 
+            this.contabilitate.venituri += aranjament.CalculeazaPretVanzare();
 
         }
 
     }
+
+    public Angajat getAngajat() {
+        return angajat;
+    }
+
+    public void setAngajat(Angajat angajat) {
+        this.angajat = angajat;
+    }
+
     @Override
     public String toString() {
         return "Comanda{" +
