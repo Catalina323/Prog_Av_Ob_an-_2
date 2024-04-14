@@ -5,7 +5,7 @@
  - Comanda Client si Angajat pentru a construi scenariul real  
  - Data si ComparatorAngajatiData pentru a pastra o evidenta si a sorta angajatii  
 #### De asemenea am folosit si interfetele PreturiCumparare si PreturiVanzare si clasa Dimensiuni  
-### Functionalitatile au fost definite in clasa Serviciu care contine urmatoarele metode:  
+## Functionalitatile au fost definite in clasa Serviciu care contine urmatoarele metode:  
  - afiseaza_angajati()  
  - sorteaza_angajati_dupa_salariu()  
  - sorteaza_angajati_dupa_data_angajare()  
