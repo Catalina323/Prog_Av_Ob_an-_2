@@ -1,4 +1,4 @@
-package Proiect;
+package Proiect.Domain;
 
 public class Data implements Comparable<Data>{
     private int luna;

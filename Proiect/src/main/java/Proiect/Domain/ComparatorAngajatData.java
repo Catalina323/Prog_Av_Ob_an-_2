@@ -1,4 +1,4 @@
-package Proiect;
+package Proiect.Domain;
 
 import java.util.Comparator;
 public class ComparatorAngajatData implements Comparator<Angajat>{

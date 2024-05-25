@@ -1,4 +1,6 @@
-package Proiect;
+package Proiect.Service;
+
+import Proiect.Domain.*;
 
 import static java.util.Arrays.sort;
 
@@ -124,7 +126,7 @@ public class Serviciu {
     }
 
     //Creaza o comanda 9 de buchete
-    public Client comanda_buchete(Client client, Buchet ... buchete){
+    public Client comanda_buchete(Client client, Buchet... buchete){
         Comanda comanda = new Comanda(buchete);
         comanda.setAngajat(angajati[angajatul_zilei]);
         client.plaseazaComanda(comanda);
@@ -132,7 +134,7 @@ public class Serviciu {
     }
 
     //Realizeaza o comanda 9 de aranjamente
-    public Client comanda_aranjamente(Client client, Aranjament ... aranjamente){
+    public Client comanda_aranjamente(Client client, Aranjament... aranjamente){
         Comanda comanda = new Comanda(aranjamente);
         comanda.setAngajat(angajati[angajatul_zilei]);
         client.plaseazaComanda(comanda);

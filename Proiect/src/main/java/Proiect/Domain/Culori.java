@@ -1,4 +1,4 @@
-package Proiect;
+package Proiect.Domain;
 
 public enum Culori {
     ROZ,

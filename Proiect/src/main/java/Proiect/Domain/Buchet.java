@@ -1,6 +1,6 @@
-package Proiect;
+package Proiect.Domain;
 
-public class Buchet implements PreturiVanzare, PreturiCumparare{
+public class Buchet implements PreturiVanzare, PreturiCumparare {
 
     private String nume;
     protected int trandafiri = 0;

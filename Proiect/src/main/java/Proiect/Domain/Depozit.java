@@ -1,6 +1,6 @@
-package Proiect;
+package Proiect.Domain;
 
-public class Depozit implements PreturiCumparare{
+public class Depozit implements PreturiCumparare {
 
     private int nr_trandafiri;
     private int nr_hortensii;

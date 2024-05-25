@@ -1,4 +1,4 @@
-package Proiect;
+package Proiect.Domain;
 
 public interface PreturiVanzare {
     //preturi cu care floraria vinde marfa clientilor

@@ -1,6 +1,10 @@
 package Proiect;
 
-import static Proiect.Dimensiuni.LARGE;
+import Proiect.Domain.Aranjament;
+import Proiect.Domain.Buchet;
+import Proiect.Domain.Client;
+import Proiect.Domain.Dimensiuni;
+import Proiect.Service.Serviciu;
 
 public class Main {
     public static void main(String[] args) {
