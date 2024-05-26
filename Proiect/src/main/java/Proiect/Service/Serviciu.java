@@ -51,8 +51,8 @@ public class Serviciu {
     //afiseaza bilantul florariei
     public void calculeza_bilant()
     {
-        System.out.println("Venituri: " + contabilitate.venituri);
-        System.out.println("Cheltuieli: " + contabilitate.cheltuieli);
+        System.out.println("Venituri: " + contabilitate.getVenituri());
+        System.out.println("Cheltuieli: " + contabilitate.getCheltuieli());
         System.out.println("Profit: " + contabilitate.calculeazaProfit());
     }
 

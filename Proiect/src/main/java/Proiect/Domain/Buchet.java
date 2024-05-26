@@ -10,6 +10,33 @@ public class Buchet implements PreturiVanzare, PreturiCumparare {
     protected int bujori = 0;
     protected boolean verdeata = false;
 
+    public String getNume() {
+        return nume;
+    }
+
+    public int getTrandafiri() {
+        return trandafiri;
+    }
+
+    public int getFrezii() {
+        return frezii;
+    }
+
+    public int getHortensii() {
+        return hortensii;
+    }
+
+    public int getLalele() {
+        return lalele;
+    }
+
+    public int getBujori() {
+        return bujori;
+    }
+
+    public boolean isVerdeata() {
+        return verdeata;
+    }
 
     public double CalculeazaPretVanzare(){
         double pretVerdeata;

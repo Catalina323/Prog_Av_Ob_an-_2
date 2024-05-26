@@ -5,6 +5,14 @@ public class Contabilitate implements PreturiCumparare {
     protected double cheltuieli;
     protected double venituri;
 
+    public double getCheltuieli() {
+        return cheltuieli;
+    }
+
+    public double getVenituri() {
+        return venituri;
+    }
+
     //SINGLETON PT CONTABILITATE
     private static Contabilitate instance;
 

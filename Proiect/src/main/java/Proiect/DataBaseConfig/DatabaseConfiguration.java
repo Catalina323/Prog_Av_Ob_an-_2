@@ -7,11 +7,8 @@ import java.sql.SQLException;
 public class DatabaseConfiguration {
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3307/baza_date_florarie";
-
-    private static final String USER = "User";
-
+    private static final String USER = "Catalina";
     private static final String PASSWORD = "MyRandomPassword";
-
     private static Connection connection;
 
     private DatabaseConfiguration() {
@@ -44,6 +41,5 @@ public class DatabaseConfiguration {
             e.printStackTrace();
         }
     }
-
 
 }

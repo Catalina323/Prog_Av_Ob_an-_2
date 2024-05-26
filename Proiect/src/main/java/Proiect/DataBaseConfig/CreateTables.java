@@ -107,7 +107,8 @@ public class CreateTables {
             CREATE TABLE IF NOT EXISTS client (
                 id int PRIMARY KEY AUTO_INCREMENT,
                 nume varchar(40),
-                prenume varchar(40)
+                prenume varchar(40),
+                nrComenzi int
             )
             """;
 

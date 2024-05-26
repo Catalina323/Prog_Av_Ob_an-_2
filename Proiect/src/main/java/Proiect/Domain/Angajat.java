@@ -18,6 +18,14 @@ public class Angajat implements Comparable<Angajat>{
         this.data_angajare = new Data(luna, an);
     }
 
+    //constructor fara data
+    public Angajat(String nume, String prenume, int varsta, int salariu) {
+        this.nume = nume;
+        this.prenume = prenume;
+        this.varsta = varsta;
+        this.salariu = salariu;
+    }
+
     @Override
     public String toString() {
         return "Angajat{" +
@@ -49,7 +57,7 @@ public class Angajat implements Comparable<Angajat>{
         return varsta;
     }
 
-    public float getSalariu() {
+    public int getSalariu() {
         return salariu;
     }
 

@@ -69,7 +69,6 @@ public class Aranjament extends Buchet {
                 pretCos;
     }
 
-
     @Override
     public String toString() {
         return "Aranjament{" +

@@ -6,10 +6,11 @@ public class Comanda {
 
     private Buchet[] buchete;
     private Aranjament[] aranjamente;
-    private Angajat angajat;
-
+    //private Angajat angajat;
+    private int idAngajat;
     private static Contabilitate contabilitate = Contabilitate.getInstance();
     private static Depozit depozit = Depozit.getInstance();
+
 
     public Comanda(Buchet ... buchete) {
         this.buchete = buchete;
@@ -246,13 +247,22 @@ public class Comanda {
 
     }
 
-    public Angajat getAngajat() {
-        return angajat;
+    //public Angajat getAngajat() {
+    //    return angajat;
+    //}
+
+    public int getIdAngajat(){
+        return idAngajat;
     }
 
-    public void setAngajat(Angajat angajat) {
-        this.angajat = angajat;
+    //public void setAngajat(Angajat angajat) {
+    //   this.angajat = angajat;
+    //}
+
+    public void setIdAngajat(int idAngajat){
+        this.idAngajat = idAngajat;
     }
+
 
     @Override
     public String toString() {
