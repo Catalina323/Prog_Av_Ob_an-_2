@@ -10,15 +10,16 @@ public class CreateTables {
         String createTableSql = """ 
             CREATE TABLE IF NOT EXISTS buchet (
                 id int PRIMARY KEY AUTO_INCREMENT,
-                idComanda foreign key (idComanda) references comanda (id),
+                idComanda int, 
                 nume varchar(40),
                 trandafiri int,
                 frezii int,
                 hortensii int,
                 lalele int,
                 bujori int,
-                verdeata boolean
-            )
+                verdeata boolean,
+                FOREIGN KEY (idComanda) REFERENCES comanda (id)
+                )
             """;
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
@@ -35,7 +36,7 @@ public class CreateTables {
         String createTableSql = """ 
             CREATE TABLE IF NOT EXISTS aranjament (
                 id int PRIMARY KEY AUTO_INCREMENT,
-                idComanda int foreign key (idComanda) references comanda (id),
+                idComanda int, 
                 nume varchar(40),
                 trandafiri int,
                 frezii int,
@@ -43,7 +44,8 @@ public class CreateTables {
                 lalele int,
                 bujori int,
                 cos varchar(10),
-                verdeata boolean
+                verdeata boolean,
+                foreign key (idComanda) references comanda (id)
             )
             """;
 
@@ -85,8 +87,10 @@ public class CreateTables {
         String createTableSql = """ 
             CREATE TABLE IF NOT EXISTS comanda (
                 id int PRIMARY KEY AUTO_INCREMENT,
-                idAngajat int foreign key (idAngajat) references angajat (id)
-                idClient int foreign key (idClient) references clients (id)
+                idAngajat int, 
+                idClient int,
+                foreign key (idAngajat) references angajat (id),
+                foreign key (idClient) references client (id)
             )
             """;
 
