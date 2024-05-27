@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class ClientRepository {
 
-    public void insert(Client client) {
+    public int insert(Client client) {
         String insertClientSql = "INSERT INRO client (id, nume, prenume, nrComenzi) VALUES (null, ?, ?, 0)";
         Connection conn = DatabaseConfiguration.getDatabaseConnection();
 
@@ -20,10 +20,24 @@ public class ClientRepository {
             PreparedStatement preparedStatement = conn.prepareStatement(insertClientSql);
             preparedStatement.setString(1, client.getNume());
             preparedStatement.setString(2, client.getPrenume());
-            preparedStatement.execute();
-        }catch(SQLException e) {
+            boolean affectedRows = preparedStatement.execute();
+
+            // pentru a recupera id ul generat de gaza de date
+            if (affectedRows) {
+                // Recuperarea cheilor generate
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    // Obținerea ID-ului generat
+                    int generatedId = generatedKeys.getInt(1);
+                    return generatedId;
+                }
+            }
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return -1;
     }
 
     public Optional<Client> getById(int id) {
@@ -64,6 +78,19 @@ public class ClientRepository {
 
         }
         return Optional.empty();
+    }
+
+    public void AddOneNrComenzi(int id) {
+        String updateComandaSql = "UPDATE comanda SET nrComenzi = nrComenzi + 1 WHERE id = ?";
+        Connection conn = DatabaseConfiguration.getDatabaseConnection();
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(updateComandaSql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
