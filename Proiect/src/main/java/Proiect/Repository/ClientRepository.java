@@ -13,17 +13,17 @@ import java.util.Optional;
 public class ClientRepository {
 
     public int insert(Client client) {
-        String insertClientSql = "INSERT INRO client (id, nume, prenume, nrComenzi) VALUES (null, ?, ?, 0)";
+        String insertClientSql = "INSERT INTO client (id, nume, prenume, nrComenzi) VALUES (null, ?, ?, 0)";
         Connection conn = DatabaseConfiguration.getDatabaseConnection();
 
         try {
-            PreparedStatement preparedStatement = conn.prepareStatement(insertClientSql);
+            PreparedStatement preparedStatement = conn.prepareStatement(insertClientSql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, client.getNume());
             preparedStatement.setString(2, client.getPrenume());
-            boolean affectedRows = preparedStatement.execute();
+            int affectedRows = preparedStatement.executeUpdate();
 
             // pentru a recupera id ul generat de gaza de date
-            if (affectedRows) {
+            if (affectedRows > 0) {
                 // Recuperarea cheilor generate
                 ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
                 if (generatedKeys.next()) {

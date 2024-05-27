@@ -1,8 +1,9 @@
 package Proiect.Service;
 
 import Proiect.Domain.*;
-import Proiect.Repository.ClientRepository;
-import Proiect.Repository.ComandaRepository;
+import Proiect.Repository.*;
+
+import java.util.Optional;
 
 import static java.util.Arrays.sort;
 
@@ -20,11 +21,24 @@ public class Serviciu {
     private void initializare_florarie(){
         depozit = Depozit.getInstance();
         contabilitate = Contabilitate.getInstance();
-//        angajati = new Angajat[4];
-//        angajati[0] = new Angajat("Nica", "Catalina", 20, 3500, 2024, 2);
-//        angajati[1] = new Angajat("Neacsu", "Anamaria", 21, 2300, 2024, 3);
-//        angajati[2] = new Angajat("State", "Madalina", 20, 2700, 2023, 5);
-//        angajati[3] = new Angajat("Calota", "Ana", 22, 3000, 2023, 6);
+        Angajat angajati[] = new Angajat[4];
+        AngajatRepository angajatRepository = new AngajatRepository();
+        Optional<Angajat> angajat = angajatRepository.getById(1);
+        if(angajat.isPresent()){
+            angajati[0] = angajat.get();
+        }
+        Optional<Angajat> angajat2 = angajatRepository.getById(1);
+        if(angajat2.isPresent()){
+            angajati[1] = angajat2.get();
+        }
+        Optional<Angajat> angajat3 = angajatRepository.getById(1);
+        if(angajat3.isPresent()){
+            angajati[2] = angajat3.get();
+        }
+        Optional<Angajat> angajat4 = angajatRepository.getById(1);
+        if(angajat4.isPresent()){
+            angajati[3] = angajat4.get();
+        }
     }
 
     public void afiseaza_angajati(){
@@ -128,20 +142,25 @@ public class Serviciu {
 
 
     // creeaza un client si il adauga in baza de date. returneaza id ul clientului din baza de date
-    public int ClientNou(String nume, String prenume){
-        Client client = new Client(nume, prenume, 0);
+    public int ClientNou(Client client){
         ClientRepository clientRepository = new ClientRepository();
         return clientRepository.insert(client);
     }
 
-    //Creaza o comanda 9 de buchete
-    public Client comanda_buchete(int idClient, Client client, Buchet... buchete){
+    //Creaza o comanda 9 de buchete (returneaza id ul comenzii din baza de date)
+    public int comanda_buchete(int idClient, Client client, Buchet... buchete){
         Comanda comanda = new Comanda(buchete);
         comanda.setIdAngajat(angajatul_zilei);
         ComandaRepository comandaRepository = new ComandaRepository();
-        comandaRepository.insert(angajatul_zilei, idClient);
+        int idComanda = comandaRepository.insert(angajatul_zilei, idClient);
         client.plaseazaComanda(comanda);
-        return client;
+
+        BuchetRepository buchetRepository = new BuchetRepository();
+        for(Buchet buchet:buchete){
+            buchetRepository.insert(buchet, idComanda);
+        }
+
+        return idComanda;
     }
 
     //Realizeaza o comanda 9 de aranjamente
@@ -149,8 +168,14 @@ public class Serviciu {
         Comanda comanda = new Comanda(aranjamente);
         comanda.setIdAngajat(angajatul_zilei);
         ComandaRepository comandaRepository = new ComandaRepository();
-        comandaRepository.insert(angajatul_zilei, idClient);
+        int idComanda = comandaRepository.insert(angajatul_zilei, idClient);
         client.plaseazaComanda(comanda);
+
+        AranjamentRepository aranjamentRepository = new AranjamentRepository();
+        for(Aranjament aranjament:aranjamente){
+            aranjamentRepository.insert(aranjament, idComanda);
+        }
+
         return client;
     }
 
