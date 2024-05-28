@@ -5,6 +5,11 @@ public class Aranjament extends Buchet {
     private String nume;
     private Dimensiuni dimensiune;
 
+    @Override
+    public String getNume() {
+        return nume;
+    }
+
     public double CalculeazaPretVanzare(){
         double pretVerdeata, pretCos;
         if(verdeata){

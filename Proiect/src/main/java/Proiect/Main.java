@@ -25,37 +25,40 @@ public class Main {
 //        Angajat angajat2 = new Angajat("Nica", "Catalina", 20, 3500, 2024, 2);
 //        Angajat angajat3 = new Angajat("State", "Madalina", 20, 2700, 2023, 5);
 //        Angajat angajat4 = new Angajat("Calota", "Ana", 22, 3000, 2023, 6);
-//
-//        AngajatRepository angajatRepository = new AngajatRepository();
+        Angajat angajat5 = new Angajat("Zugravu", "Alexandra", 21, 2400);
+        AngajatRepository angajatRepository = new AngajatRepository();
 //        angajatRepository.insert(angajat2);
 //        angajatRepository.insert(angajat3);
 //        angajatRepository.insert(angajat4);
+        angajatRepository.insert(angajat5);
 
 
 
 
 
 
-
-        Buchet buchet = new Buchet.Builder("buchet de primavara").withBujori(3).withFrezii(5).withVerdeata().build();
-        Buchet buchet2 = new Buchet.Builder("buchet de aniversare").withTrandafiri(5).withHortensii(2).withFrezii(3).withVerdeata().build();
-//        Aranjament aranjament = new Aranjament.Builder("aranjament de nunta", Dimensiuni.LARGE).withHortensii(5).withFrezii(8).withTrandafiri(9).withVerdeata().build();
+        //Buchet buchet = new Buchet.Builder("buchet de primavara").withBujori(3).withFrezii(5).withVerdeata().build();
+        //Buchet buchet2 = new Buchet.Builder("buchet de aniversare").withTrandafiri(5).withHortensii(2).withFrezii(3).withVerdeata().build();
+        Aranjament aranjament = new Aranjament.Builder("aranjament de nunta", Dimensiuni.LARGE).withHortensii(5).withFrezii(8).withTrandafiri(9).withVerdeata().build();
 //
 //
-        Serviciu serviciu = new Serviciu();
-        serviciu.cumpara_stoc(14);
-        serviciu.setAngajatul_zilei(1);
+//        Serviciu serviciu = new Serviciu();
+//        serviciu.cumpara_stoc(20);
+//        serviciu.setAngajatul_zilei(1);
 
-        ComandaRepository comandaRepository = new ComandaRepository();
-        Client client = new Client("Ianc", "Octavian");
-        int idClient = serviciu.ClientNou(client);
+        //serviciu.afiseaza_stoc();
 
-        int idComanda = serviciu.comanda_buchete(idClient, client, buchet, buchet2);
-
-        System.out.println(idComanda);
-
-        Optional<Comanda> comanda = comandaRepository.getById(idComanda);
-        System.out.println(comanda);
+//        ComandaRepository comandaRepository = new ComandaRepository();
+//        Client client = new Client("Florete", "Fabian Andrei");
+//        int idClient = serviciu.ClientNou(client);
+//
+//        int idComanda = serviciu.comanda_aranjamente(idClient, client, aranjament);
+//        //int idComanda2 = serviciu.comanda_buchete(idClient, client, buchet);
+//        System.out.println(idComanda);
+//
+//        Optional<Comanda> comanda = comandaRepository.getById(idComanda);
+//        System.out.println(comanda);
+        //System.out.println(aranjament);
 
 //        serviciu.comanda_aranjamente(client, aranjament);
 //

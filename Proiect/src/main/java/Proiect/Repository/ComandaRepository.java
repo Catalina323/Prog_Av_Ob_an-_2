@@ -6,11 +6,28 @@ import Proiect.Domain.Buchet;
 import Proiect.Domain.Comanda;
 import Proiect.Domain.Dimensiuni;
 
+import javax.swing.text.html.Option;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.sql.*;
+import java.time.Instant;
 import java.util.Objects;
 import java.util.Optional;
 
 public class ComandaRepository {
+
+    public void afisareAudit(String line){
+        try(RandomAccessFile randomAccessFile = new RandomAccessFile("src/main/java/Proiect/Audit/audit.csv", "rw")) {
+            File file = new File("src/main/java/Proiect/Audit/audit.csv");
+            randomAccessFile.seek(file.length());
+            randomAccessFile.write("\n".getBytes());
+            randomAccessFile.write(line.getBytes());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public int insert(int idAngajat, int idClient) {
         String insertComandaSql = "INSERT INTO comanda (id, idAngajat, idClient) VALUES (null, ?, ?)";
@@ -22,6 +39,11 @@ public class ComandaRepository {
             preparedStatement.setInt(2, idClient);
 
             int affectedRows = preparedStatement.executeUpdate();
+
+            // afisare in audit
+            String line = "Inserare_comanda," + Instant.now();
+            afisareAudit(line);
+
             // pentru a recupera id ul generat de gaza de date
             if (affectedRows > 0) {
                 // Recuperarea cheilor generate
@@ -57,6 +79,10 @@ public class ComandaRepository {
             PreparedStatement preparedStatementAranjamente = conn.prepareStatement(selectAranjamenteSql);
             preparedStatementAranjamente.setInt(1, id);
             ResultSet resultSetAranjamente = preparedStatementAranjamente.executeQuery();
+
+            //afisare in audit
+            String line = "Select_comanda," + Instant.now();
+            afisareAudit(line);
 
             return mapToBuchet(resultSet, resultSetBuchete, resultSetAranjamente);
         } catch (SQLException e) {
@@ -118,6 +144,7 @@ public class ComandaRepository {
             Aranjament[] aranjamente = new Aranjament[5];
             while(resultSetAranjamente.next()) {
                 int id = resultSetAranjamente.getInt("id");
+                int idComanda = resultSetAranjamente.getInt("idComanda");
                 String nume = resultSetAranjamente.getString("nume");
                 int trandafiri = resultSetAranjamente.getInt("trandafiri");
                 int frezii = resultSetAranjamente.getInt("frezii");
@@ -125,24 +152,19 @@ public class ComandaRepository {
                 int lalele = resultSetAranjamente.getInt("lalele");
                 int bujori = resultSetAranjamente.getInt("bujori");
                 boolean verdeata = resultSetAranjamente.getBoolean("verdeata");
-                String dimensiune = resultSetAranjamente.getString("dimensiune");
+                String dimensiune = resultSetAranjamente.getString("cos");
                 Optional<Aranjament> aranjament =  Optional.of(new Aranjament.Builder(nume, toDimensiune(dimensiune)).withTrandafiri(trandafiri)
                         .withFrezii(frezii).withHortensii(hortensii).withLalele(lalele)
                         .withBujori(bujori).withVerdeata().build());
                 if(aranjament.isPresent()) {
-                    aranjamente[count] = aranjament.get();
-                    count += 1;
-                }
 
-                if(count > 0) {
-                    Comanda comandaA = new Comanda(aranjamente);
+                    Aranjament aranjament1 = aranjament.get();
+                    count += 1;
+                    Comanda comandaA = new Comanda(aranjament1);
                     comandaA.setIdAngajat(idAngajat);
                     return Optional.of(comandaA);
                 }
-
             }
-
-
         }
         return Optional.empty();
     }

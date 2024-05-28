@@ -164,7 +164,7 @@ public class Serviciu {
     }
 
     //Realizeaza o comanda 9 de aranjamente
-    public Client comanda_aranjamente(int idClient, Client client, Aranjament... aranjamente){
+    public int comanda_aranjamente(int idClient, Client client, Aranjament... aranjamente){
         Comanda comanda = new Comanda(aranjamente);
         comanda.setIdAngajat(angajatul_zilei);
         ComandaRepository comandaRepository = new ComandaRepository();
@@ -176,7 +176,7 @@ public class Serviciu {
             aranjamentRepository.insert(aranjament, idComanda);
         }
 
-        return client;
+        return idComanda;
     }
 
     public void calculeaza_pret_buchet(Buchet buchet){
